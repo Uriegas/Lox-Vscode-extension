@@ -19,7 +19,18 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from Lox-extension!');
 	});
 
-	context.subscriptions.push(disposable);
+	let disposable2 = vscode.commands.registerCommand('lox-extension.askQuestion', async () => {
+		const answer = await vscode.window.showInformationMessage("How are you?", "Good", "Bad", "Okay");
+		if(answer === "Good") {
+			vscode.window.showInformationMessage("I'm glad to hear that");
+			console.log({answer});
+		} else if(answer === "Bad") {
+			vscode.window.showInformationMessage("I'm sorry to hear that");
+		} else {
+			vscode.window.showInformationMessage("I'm okay too");
+		}
+	});
+	context.subscriptions.push(disposable, disposable2);
 }
 
 // this method is called when your extension is deactivated
