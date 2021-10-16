@@ -18,11 +18,13 @@
     "commands": [
       {
         "command": "lox-extension.helloWorld",
-        "title": "Hello World"
+        "title": "Hello World",
+        "category": "Lox"
       },
       {
         "command": "lox-extension.askQuestion",
-        "title": "Ask Question"
+        "title": "Ask Question",
+        "category": "Lox"
       }
     ]
   },

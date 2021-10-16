@@ -61,9 +61,11 @@ function activate(context) {
     });
     let disposable2 = vscode.commands.registerCommand('lox-extension.askQuestion', async () => {
         const answer = await vscode.window.showInformationMessage("How are you?", "Good", "Bad", "Okay");
-        if (answer === "Good") {
+        if (answer === undefined) {
+            vscode.window.showInformationMessage("You didn't answer");
+        }
+        else if (answer === "Good") {
             vscode.window.showInformationMessage("I'm glad to hear that");
-            console.log({ answer });
         }
         else if (answer === "Bad") {
             vscode.window.showInformationMessage("I'm sorry to hear that");
@@ -71,6 +73,7 @@ function activate(context) {
         else {
             vscode.window.showInformationMessage("I'm okay too");
         }
+        console.log({ answer });
     });
     context.subscriptions.push(disposable, disposable2);
 }
